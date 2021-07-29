@@ -1,0 +1,21 @@
+.formSignIn {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+.login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    flex-direction:row;
+    background-image: url('../../assets/esferaRaios.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0 auto;
+    
+    height: 100vh;
+}
+
