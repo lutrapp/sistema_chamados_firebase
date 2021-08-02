@@ -1,0 +1,73 @@
+.profileContainer {
+    display: flex;
+    background-color: #f8f8f8;
+    border-radius: 5px;
+    padding: 0.8em;
+    align-items: center;
+    justify-content: center;
+}
+
+.labelAvatar {
+    width: 250px;
+    height: 250px;
+    /* background-color: #121212; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.labelAvatar input {
+    display: none;
+}
+
+.labelAvatar span {
+    z-index: 99;
+    position: absolute;
+    transition: all 0.6s;
+}
+
+.labelAvatar span:hover {
+    transform: scale(1.7);
+}
+
+.profileContainer input{
+    width: 100%;
+    padding: 5px;
+    margin: 0px;
+}
+
+.profileContainer button{
+   width: 100%;
+   margin-bottom: 0;
+   border-radius: 5px;
+}
+
+.profileContainer button.btn.btn-danger{
+   width: 30%;
+}
+
+.formProfile img {
+    margin-bottom: .5em;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.formProfile label {
+    margin-bottom: .3em;
+    font-size: 1.4em;
+}
+
+.formProfile input, textarea, select {
+    margin-bottom: 1em;
+    padding: .3em;
+    border: 0;
+    border-radius: 5px;
+    background-color: rgb(233, 227, 227);
+}
+
+.formProfile input:disabled {
+    cursor: not-allowed;
+}
+
