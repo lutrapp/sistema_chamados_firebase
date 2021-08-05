@@ -25,20 +25,20 @@ a.linkPages svg{
 }
 
 .sideBar div{
-    background-image: url('../../assets/esferaRaios.jpg');
+    background-image: url('../../assets/televisao.png');
     background-color: #1d1c1c;
     background-position: center;
     background-size: cover;
     height: 150px;
-    padding-top: 30px;
+    padding-top: 25px;
 }
 
 .sideBar div img {
     border-radius: 50%;
     margin: auto;
     display: block;
-    width: 90px;
-    height: 90px;
+    width: 85px;
+    height: 85px;
     -webkit-filter: drop-shadow(2px 3px 6px #121212);
     filter: drop-shadow(2px 3px 6px #121212);
     object-fit: cover;

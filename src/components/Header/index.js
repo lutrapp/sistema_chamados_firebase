@@ -11,7 +11,7 @@ export default function Header(){
     return(
         <>
         <div className="sideBar">
-            <div>Olá {user.nome}                 
+            <div>                 
             <img className="img-fluid" src={user.avatarUrl===null? semFoto : user.avatarUrl} alt="imagem do usuário"/>
             </div>
             <Link to='/dashboard' className="linkPages">

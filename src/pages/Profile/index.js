@@ -4,6 +4,7 @@ import semFoto from "../../assets/semFoto.png";
 import Header from "../../components/Header";
 import Title from "../../components/Title";
 import firebase from "../../services/firebaseConnection";
+import { toast } from "react-toastify";
 
 import { AuthContext } from "../../contexts/auth";
 
@@ -15,7 +16,55 @@ export default function Profile() {
   const [nome, setNome] = useState(user && user.nome);
   const [email, setEmail] = useState(user && user.email);
   const [avatarUrl, setAvatarUrl] = useState(user && user.avatarUrl);
-  const [imageAvatar, setImageAvatar] = useState(null)
+  const [imageAvatar, setImageAvatar] = useState(null);
+
+  function handleFile(e){
+      if(e.target.files[0]){
+          const image = e.target.files[0];
+
+          if(image.type === 'image/jpeg' || image.type === 'image/jpg' || image.type === 'image/png'){
+              setImageAvatar(image);
+              setAvatarUrl(URL.createObjectURL(e.target.files[0]))
+          }else {
+            toast.warn('A imagem precisa estar no formato png, jpg ou jpeg!');
+            setImageAvatar(null);
+            return null;
+          }
+      }
+    //   console.log(e.target.files[0])
+  }
+
+  async function handleUpload(){
+    const currentUid = user.uid;
+
+    const uploadTask = await firebase.storage()
+    .ref(`images/${currentUid}/${imageAvatar.name}`)
+    .put(imageAvatar)
+    .then( async () =>{
+      console.log('foto enviada')
+      await firebase.storage().ref(`images/${currentUid}`)
+      .child(imageAvatar.name).getDownloadURL()
+      .then( async (url)=>{
+        let urlFoto = url;
+        await firebase.firestore().collection('users')
+        .doc(user.uid)
+        .update({
+          avatarUrl:urlFoto,
+          nome:nome
+        })
+        .then(()=>{
+          let data = {
+            ...user,
+            avatarUrl: urlFoto,
+            nome: nome
+          }
+          setUser(data);
+          storageUser(data)
+        })
+      })
+    })
+
+  }
 
   async function handleSave(e){
       e.preventDefault();
@@ -32,8 +81,10 @@ export default function Profile() {
             };
             setUser(data);
             storageUser(data);
-
         })
+      }
+      else if(nome !== '' && imageAvatar !== null){
+          handleUpload();
       }
   }
 
@@ -51,7 +102,7 @@ export default function Profile() {
                 <span>
                   <FcUpload size={24} />
                 </span>
-                <input type="file" />
+                <input type="file" accept="image" onChange={handleFile} />
                 <br />
                 {avatarUrl === null ? (
                   <img

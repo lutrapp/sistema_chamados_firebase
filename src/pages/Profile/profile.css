@@ -29,7 +29,7 @@
 }
 
 .labelAvatar span:hover {
-    transform: scale(1.7);
+    transform: scale(2);
 }
 
 .profileContainer input{

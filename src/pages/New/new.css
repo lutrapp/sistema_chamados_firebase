@@ -1,0 +1,23 @@
+form textarea {
+    margin-top: 5px;
+    height: 100px;
+    /* resize: none; */
+}
+
+form input[type="radio"] {
+    margin: 15px 5px;
+}
+
+form input[type="radio"]:not(:first-child) {
+    margin-left: 15px;
+}
+
+/* @media screen and (max-width:400px ) {
+    form input[type="radio"] {
+        margin: 5px 5px;
+        display: flex;
+    }
+    form input[type="radio"]:not(:first-child) {
+        margin-left: 15px;
+    }
+} */
